@@ -24,3 +24,12 @@ type Query {
   getAllPets: [Pet!]!
   getAuthorById(id: ID!): Author!
 }
+
+type Mutation {
+  savePet(pet: CreatePetInputDto!): Pet!
+}
+
+input CreatePetInputDto {
+  name: String!
+  type: String
+}
