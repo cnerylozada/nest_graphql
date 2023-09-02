@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { PetsModule } from './pets/pets.module';
+import { AuthorsModule } from './authors/authors.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { PetsModule } from './pets/pets.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     PetsModule,
+    AuthorsModule,
   ],
   controllers: [],
   providers: [],
