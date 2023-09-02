@@ -8,6 +8,19 @@ type Pet {
   type: String
 }
 
+type Author {
+  id: ID!
+  firstName: String!
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  votes: Int
+}
+
 type Query {
   getAllPets: [Pet!]!
+  getAuthorById(id: ID!): Author!
 }

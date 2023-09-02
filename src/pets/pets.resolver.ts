@@ -2,7 +2,7 @@ import { Query, Resolver } from '@nestjs/graphql';
 import { PetsService } from './pets.service';
 import { Pet } from './entities';
 
-@Resolver()
+@Resolver((of) => Pet)
 export class PetsResolver {
   constructor(private petsService: PetsService) {}
 
