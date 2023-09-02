@@ -2,7 +2,6 @@ import { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { PetsModule } from './pets/pets.module';
 
 @Module({
@@ -13,7 +12,7 @@ import { PetsModule } from './pets/pets.module';
     }),
     PetsModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [],
 })
 export class AppModule {}
