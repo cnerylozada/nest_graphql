@@ -1,6 +1,6 @@
 import { Query, Resolver } from '@nestjs/graphql';
 import { PetsService } from './pets.service';
-import { Pet } from './entities';
+import { Pet } from './pet.entity';
 
 @Resolver((of) => Pet)
 export class PetsResolver {
