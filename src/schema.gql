@@ -22,14 +22,20 @@ type Post {
 
 type Query {
   getAllPets: [Pet!]!
+  getAllAuthors: [Author!]!
   getAuthorById(id: ID!): Author!
 }
 
 type Mutation {
   savePet(pet: CreatePetInputDto!): Pet!
+  saveAuthor(author: CreateAuthorInputDto!): Author!
 }
 
 input CreatePetInputDto {
   name: String!
   type: String
+}
+
+input CreateAuthorInputDto {
+  firstName: String!
 }

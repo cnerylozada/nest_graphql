@@ -1,13 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { Author } from './author.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateAuthorInputDto } from './dto';
 
 @Injectable()
 export class AuthorsService {
-  async getAuthorById(id: string): Promise<Author> {
-    return {
-      id: '1',
-      firstName: 'Cristh',
-      posts: [{ id: '1', title: 'My first post', votes: 1 }],
-    };
+  constructor(
+    @InjectRepository(Author) private authorsRepository: Repository<Author>,
+  ) {}
+
+  async getAllAuthors() {
+    return this.authorsRepository.find();
+  }
+
+  async getAuthorById(id: string) {
+    return this.authorsRepository.findOneBy({ id });
+  }
+
+  async saveAuthor(author: CreateAuthorInputDto) {
+    const newAuthor = new Author();
+    newAuthor.firstName = author.firstName;
+    newAuthor.posts = [];
+    return this.authorsRepository.save(newAuthor);
   }
 }

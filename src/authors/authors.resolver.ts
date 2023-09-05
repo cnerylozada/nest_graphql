@@ -1,6 +1,7 @@
 import {
   Args,
   ID,
+  Mutation,
   Parent,
   Query,
   ResolveField,
@@ -9,6 +10,7 @@ import {
 import { AuthorsService } from './authors.service';
 import { PostsService } from './posts.service';
 import { Author, Post } from './author.entity';
+import { CreateAuthorInputDto } from './dto';
 
 @Resolver((of) => Author)
 export class AuthorsResolver {
@@ -22,8 +24,18 @@ export class AuthorsResolver {
     return this.postsService.getPostByAuthorId(author.id);
   }
 
+  @Query((returns) => [Author])
+  getAllAuthors() {
+    return this.authorsService.getAllAuthors();
+  }
+
   @Query((returns) => Author)
   getAuthorById(@Args('id', { type: () => ID! }) id: string) {
     return this.authorsService.getAuthorById(id);
+  }
+
+  @Mutation((returns) => Author)
+  saveAuthor(@Args('author') author: CreateAuthorInputDto) {
+    return this.authorsService.saveAuthor(author);
   }
 }
