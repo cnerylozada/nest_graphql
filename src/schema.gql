@@ -29,6 +29,7 @@ type Query {
 type Mutation {
   savePet(pet: CreatePetInputDto!): Pet!
   saveAuthor(author: CreateAuthorInputDto!): Author!
+  savePostInAuthor(post: CreatePostInputDto!, authordId: ID!): Post!
 }
 
 input CreatePetInputDto {
@@ -38,4 +39,8 @@ input CreatePetInputDto {
 
 input CreateAuthorInputDto {
   firstName: String!
+}
+
+input CreatePostInputDto {
+  title: String!
 }

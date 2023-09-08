@@ -8,9 +8,9 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { AuthorsService } from './authors.service';
-import { PostsService } from './posts.service';
 import { Author, Post } from './author.entity';
-import { CreateAuthorInputDto } from './dto';
+import { CreateAuthorInputDto, CreatePostInputDto } from './dto';
+import { PostsService } from './posts.service';
 
 @Resolver((of) => Author)
 export class AuthorsResolver {
@@ -21,7 +21,7 @@ export class AuthorsResolver {
 
   @ResolveField('posts', (returns) => [Post])
   getPostsByAuthorId(@Parent() author: Author) {
-    return this.postsService.getPostByAuthorId(author.id);
+    return this.postsService.getAllPostByAuthor(author);
   }
 
   @Query((returns) => [Author])
@@ -37,5 +37,14 @@ export class AuthorsResolver {
   @Mutation((returns) => Author)
   saveAuthor(@Args('author') author: CreateAuthorInputDto) {
     return this.authorsService.saveAuthor(author);
+  }
+
+  @Mutation((returns) => Post)
+  async savePostInAuthor(
+    @Args('post') post: CreatePostInputDto,
+    @Args('authordId', { type: () => ID! }) authorId: string,
+  ) {
+    const author = await this.authorsService.getAuthorById(authorId);
+    return this.postsService.savePostInAuthor(post, author);
   }
 }

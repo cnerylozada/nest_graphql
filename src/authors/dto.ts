@@ -8,3 +8,11 @@ export class CreateAuthorInputDto {
   @Field()
   firstName: string;
 }
+
+@InputType()
+export class CreatePostInputDto {
+  @IsString()
+  @IsNotEmpty()
+  @Field()
+  title: string;
+}
