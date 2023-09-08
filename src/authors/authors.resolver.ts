@@ -8,9 +8,9 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { AuthorsService } from './authors.service';
+import { PostsService } from './posts.service';
 import { Author, Post } from './author.entity';
 import { CreateAuthorInputDto, CreatePostInputDto } from './dto';
-import { PostsService } from './posts.service';
 
 @Resolver((of) => Author)
 export class AuthorsResolver {

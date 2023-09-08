@@ -15,7 +15,7 @@ export class AuthorsService {
   }
 
   async getAuthorById(id: string) {
-    return this.authorsRepository.findOneBy({ id });
+    return this.authorsRepository.findOneByOrFail({ id });
   }
 
   async saveAuthor(author: CreateAuthorInputDto) {

@@ -19,8 +19,8 @@ export class Author {
   firstName: string;
 
   @OneToMany(() => Post, (post) => post.author)
-  @Field((type) => [Post])
-  posts: Post[];
+  @Field((type) => [Post], { nullable: true })
+  posts?: Post[];
 }
 
 @Entity('posts')
