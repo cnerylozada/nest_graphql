@@ -5,7 +5,12 @@
 type Pet {
   id: ID!
   name: String!
-  type: String
+  type: PetType!
+}
+
+enum PetType {
+  CAT
+  DOG
 }
 
 type Author {
@@ -35,7 +40,7 @@ type Mutation {
 
 input CreatePetInputDto {
   name: String!
-  type: String
+  type: PetType!
 }
 
 input CreateAuthorInputDto {

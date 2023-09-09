@@ -1,5 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsEnum } from 'class-validator';
+import { PetType } from './pet.entity';
 
 @InputType()
 export class CreatePetInputDto {
@@ -8,7 +9,7 @@ export class CreatePetInputDto {
   @Field()
   name: string;
 
-  @IsString()
-  @Field({ nullable: true })
-  type?: string;
+  @IsEnum(PetType)
+  @Field((type) => PetType)
+  type: PetType;
 }

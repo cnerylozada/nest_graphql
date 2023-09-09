@@ -1,5 +1,11 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
+
+export enum PetType {
+  CAT = 'cat',
+  DOG = 'dog',
+}
+registerEnumType(PetType, { name: 'PetType' });
 
 @Entity('pets')
 @ObjectType()
@@ -12,7 +18,7 @@ export class Pet {
   @Field()
   name: string;
 
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  type?: string;
+  @Column({ type: 'enum', enum: PetType })
+  @Field((type) => PetType)
+  type: PetType;
 }
