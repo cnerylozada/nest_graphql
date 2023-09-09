@@ -21,13 +21,14 @@ type Post {
 }
 
 type Query {
-  getAllPets: [Pet!]!
+  pets: [Pet!]!
   getAllAuthors: [Author!]!
   getAuthorById(id: ID!): Author!
 }
 
 type Mutation {
   savePet(pet: CreatePetInputDto!): Pet!
+  deletePetById(petId: ID!): ID!
   saveAuthor(author: CreateAuthorInputDto!): Author!
   savePostInAuthor(post: CreatePostInputDto!, authordId: ID!): Post!
 }

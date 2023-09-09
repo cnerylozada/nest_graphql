@@ -19,4 +19,9 @@ export class PetsService {
     const newPet = this.petsRepository.create(pet);
     return this.petsRepository.save(newPet);
   }
+
+  async deletePetById(petId: string) {
+    await this.petsRepository.delete({ id: petId });
+    return petId;
+  }
 }
