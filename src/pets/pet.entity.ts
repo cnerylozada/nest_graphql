@@ -4,6 +4,7 @@ import { Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
 export enum PetType {
   CAT = 'cat',
   DOG = 'dog',
+  BIRD = 'bird',
 }
 registerEnumType(PetType, { name: 'PetType' });
 
