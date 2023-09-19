@@ -8,20 +8,20 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { AuthorsService } from './authors.service';
-import { PostsService } from './posts.service';
-import { Author, Post } from './author.entity';
-import { CreateAuthorInputDto, CreatePostInputDto } from './dto';
+import { BooksService } from './books.service';
+import { Author, Book } from './author.entity';
+import { CreateAuthorInputDto, CreateBookInputDto } from './dto';
 
 @Resolver((of) => Author)
 export class AuthorsResolver {
   constructor(
     private authorsService: AuthorsService,
-    private postsService: PostsService,
+    private booksService: BooksService,
   ) {}
 
-  @ResolveField('posts', (returns) => [Post])
-  getPostsByAuthorId(@Parent() author: Author) {
-    return this.postsService.getAllPostByAuthor(author);
+  @ResolveField('books', (returns) => [Book])
+  getBooksByAuthorId(@Parent() author: Author) {
+    return this.booksService.getAllBooksByAuthor(author);
   }
 
   @Query((returns) => [Author])
@@ -39,12 +39,12 @@ export class AuthorsResolver {
     return this.authorsService.saveAuthor(author);
   }
 
-  @Mutation((returns) => Post)
-  async savePostInAuthor(
-    @Args('post') post: CreatePostInputDto,
+  @Mutation((returns) => Book)
+  async saveBookInAuthor(
+    @Args('book') book: CreateBookInputDto,
     @Args('authordId', { type: () => ID! }) authorId: string,
   ) {
     const author = await this.authorsService.getAuthorById(authorId);
-    return this.postsService.savePostInAuthor(post, author);
+    return this.booksService.saveBookInAuthor(book, author);
   }
 }

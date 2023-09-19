@@ -18,14 +18,14 @@ export class Author {
   @Field()
   firstName: string;
 
-  @OneToMany(() => Post, (post) => post.author)
-  @Field((type) => [Post], { nullable: true })
-  posts?: Post[];
+  @OneToMany(() => Book, (book) => book.author)
+  @Field((type) => [Book], { nullable: true })
+  books?: Book[];
 }
 
-@Entity('posts')
+@Entity('books')
 @ObjectType()
-export class Post {
+export class Book {
   @PrimaryGeneratedColumn()
   @Field((type) => ID!)
   id: string;
@@ -37,6 +37,6 @@ export class Post {
   @Field((type) => Int, { nullable: true })
   votes?: number;
 
-  @ManyToOne(() => Author, (author) => author.posts)
+  @ManyToOne(() => Author, (author) => author.books)
   author: Author;
 }

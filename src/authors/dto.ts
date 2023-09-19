@@ -10,7 +10,7 @@ export class CreateAuthorInputDto {
 }
 
 @InputType()
-export class CreatePostInputDto {
+export class CreateBookInputDto {
   @IsString()
   @IsNotEmpty()
   @Field()

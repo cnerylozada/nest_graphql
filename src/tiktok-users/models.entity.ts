@@ -1,5 +1,11 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('tiktok-users')
 @ObjectType()
@@ -29,4 +35,19 @@ export class User {
 
   //   @Column({ type: 'timestamptz' })
   //   updatedAt: Date;
+
+  @OneToMany(() => Post, (post) => post.user)
+  @Field((type) => [Post], { nullable: true })
+  posts: Post[];
+}
+
+@Entity('tiktok-posts')
+@ObjectType()
+export class Post {
+  @PrimaryGeneratedColumn()
+  @Field((type) => Int!)
+  id: string;
+
+  @ManyToOne(() => User, (user) => user.posts)
+  user: User;
 }

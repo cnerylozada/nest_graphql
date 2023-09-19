@@ -21,7 +21,7 @@ export class AuthorsService {
   async saveAuthor(author: CreateAuthorInputDto) {
     const newAuthor = new Author();
     newAuthor.firstName = author.firstName;
-    newAuthor.posts = [];
+    newAuthor.books = [];
     return this.authorsRepository.save(newAuthor);
   }
 }
