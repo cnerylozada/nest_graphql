@@ -26,10 +26,19 @@ type Post {
   votes: Int
 }
 
+type User {
+  id: Int!
+  fullName: String!
+  bio: String!
+  image: String!
+  email: String!
+}
+
 type Query {
   pets: [Pet!]!
   getAllAuthors: [Author!]!
   getAuthorById(id: ID!): Author!
+  getAllUsers: [User!]!
 }
 
 type Mutation {

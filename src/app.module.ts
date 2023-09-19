@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { PetsModule } from './pets/pets.module';
 import { AuthorsModule } from './authors/authors.module';
+import { UsersModule } from './tiktok-users/users.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AuthorsModule } from './authors/authors.module';
     }),
     PetsModule,
     AuthorsModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
