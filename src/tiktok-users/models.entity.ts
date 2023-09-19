@@ -48,6 +48,14 @@ export class Post {
   @Field((type) => Int!)
   id: string;
 
+  @Column()
+  @Field()
+  text: string;
+
+  @Column()
+  @Field()
+  video: string;
+
   @ManyToOne(() => User, (user) => user.posts)
   user: User;
 }
