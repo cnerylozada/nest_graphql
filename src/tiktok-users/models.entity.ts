@@ -58,4 +58,17 @@ export class Post {
 
   @ManyToOne(() => User, (user) => user.posts)
   user: User;
+
+  @OneToMany(() => Like, (like) => like.post)
+  likes: Like[];
+}
+
+@Entity('tiktok-likes')
+export class Like {
+  @PrimaryGeneratedColumn()
+  @Field((type) => Int!)
+  id: string;
+
+  @ManyToOne(() => Post, (post) => post.likes)
+  post: Post;
 }
