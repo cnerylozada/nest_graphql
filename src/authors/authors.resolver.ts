@@ -8,9 +8,10 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { AuthorsService } from './authors.service';
-import { BooksService } from './books.service';
-import { Author, Book } from './author.entity';
-import { CreateAuthorInputDto, CreateBookInputDto } from './dto';
+import { BooksService } from '../books/books.service';
+import { Author } from './author.entity';
+import { CreateAuthorInputDto } from './dto';
+import { Book } from 'src/books/book.entity';
 
 @Resolver((of) => Author)
 export class AuthorsResolver {
@@ -37,14 +38,5 @@ export class AuthorsResolver {
   @Mutation((returns) => Author)
   saveAuthor(@Args('author') author: CreateAuthorInputDto) {
     return this.authorsService.saveAuthor(author);
-  }
-
-  @Mutation((returns) => Book)
-  async saveBookInAuthor(
-    @Args('book') book: CreateBookInputDto,
-    @Args('authordId', { type: () => ID! }) authorId: string,
-  ) {
-    const author = await this.authorsService.getAuthorById(authorId);
-    return this.booksService.saveBookInAuthor(book, author);
   }
 }

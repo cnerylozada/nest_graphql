@@ -6,6 +6,7 @@ import { Module } from '@nestjs/common';
 import { PetsModule } from './pets/pets.module';
 import { AuthorsModule } from './authors/authors.module';
 import { UsersModule } from './tiktok-users/users.module';
+import { BooksModule } from './books/books.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { UsersModule } from './tiktok-users/users.module';
     PetsModule,
     AuthorsModule,
     UsersModule,
+    BooksModule,
   ],
   controllers: [],
   providers: [],

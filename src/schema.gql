@@ -14,16 +14,16 @@ enum PetType {
   BIRD
 }
 
-type Author {
-  id: ID!
-  firstName: String!
-  books: [Book!]!
-}
-
 type Book {
   id: ID!
   title: String!
   votes: Int
+}
+
+type Author {
+  id: ID!
+  firstName: String!
+  books: [Book!]!
 }
 
 type User {
@@ -44,6 +44,7 @@ type Query {
   pets: [Pet!]!
   getAllAuthors: [Author!]!
   getAuthorById(id: ID!): Author!
+  getBookById(id: ID!): Book!
   getAllUsers: [User!]!
 }
 

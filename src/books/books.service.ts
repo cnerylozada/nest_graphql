@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Author, Book } from './author.entity';
+import { Book } from './book.entity';
 import { CreateBookInputDto } from './dto';
+import { Author } from '../authors/author.entity';
 
 @Injectable()
 export class BooksService {
@@ -14,6 +15,10 @@ export class BooksService {
   async getAllBooksByAuthor(author: Author) {
     const books = await this.booksRepository.findBy({ author });
     return books ? books : [];
+  }
+
+  async getBookById(id: string) {
+    return this.booksRepository.findOneBy({ id });
   }
 
   async saveBookInAuthor(book: CreateBookInputDto, author: Author) {
