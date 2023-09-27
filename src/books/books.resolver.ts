@@ -11,6 +11,11 @@ export class BooksResolver {
     private authorsService: AuthorsService,
   ) {}
 
+  @Query(() => [Book])
+  async getAllBooks() {
+    return this.booksService.getAllBooks();
+  }
+
   @Query(() => Book)
   async getBookById(@Args('id', { type: () => ID! }) id: string) {
     return this.booksService.getBookById(id);

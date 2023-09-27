@@ -12,6 +12,10 @@ export class BooksService {
     private booksRepository: Repository<Book>,
   ) {}
 
+  async getAllBooks() {
+    return this.booksRepository.find();
+  }
+
   async getAllBooksByAuthor(author: Author) {
     const books = await this.booksRepository.findBy({ author });
     return books ? books : [];
