@@ -6,7 +6,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 @ObjectType()
 export class Author {
   @PrimaryGeneratedColumn()
-  @Field((type) => ID!)
+  @Field(() => ID!)
   id: string;
 
   @Column()
@@ -14,6 +14,6 @@ export class Author {
   firstName: string;
 
   @OneToMany(() => Book, (book) => book.author)
-  @Field((type) => [Book], { nullable: true })
+  @Field(() => [Book], { nullable: true })
   books?: Book[];
 }

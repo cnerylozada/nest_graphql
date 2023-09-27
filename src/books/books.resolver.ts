@@ -11,12 +11,12 @@ export class BooksResolver {
     private authorsService: AuthorsService,
   ) {}
 
-  @Query((returns) => Book)
+  @Query(() => Book)
   async getBookById(@Args('id', { type: () => ID! }) id: string) {
     return this.booksService.getBookById(id);
   }
 
-  @Mutation((returns) => Book)
+  @Mutation(() => Book)
   async saveBookInAuthor(
     @Args('book') book: CreateBookInputDto,
     @Args('authordId', { type: () => ID! }) authorId: string,

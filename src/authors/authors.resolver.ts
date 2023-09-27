@@ -20,22 +20,22 @@ export class AuthorsResolver {
     private booksService: BooksService,
   ) {}
 
-  @ResolveField('books', (returns) => [Book])
+  @ResolveField('books', () => [Book])
   getBooksByAuthorId(@Parent() author: Author) {
     return this.booksService.getAllBooksByAuthor(author);
   }
 
-  @Query((returns) => [Author])
+  @Query(() => [Author])
   getAllAuthors() {
     return this.authorsService.getAllAuthors();
   }
 
-  @Query((returns) => Author)
+  @Query(() => Author)
   getAuthorById(@Args('id', { type: () => ID! }) id: string) {
     return this.authorsService.getAuthorById(id);
   }
 
-  @Mutation((returns) => Author)
+  @Mutation(() => Author)
   saveAuthor(@Args('author') author: CreateAuthorInputDto) {
     return this.authorsService.saveAuthor(author);
   }

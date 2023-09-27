@@ -6,14 +6,14 @@ import { Author } from 'src/authors/author.entity';
 @ObjectType()
 export class Book {
   @PrimaryGeneratedColumn()
-  @Field((type) => ID!)
+  @Field(() => ID!)
   id: string;
 
   @Column()
   @Field()
   title: string;
 
-  @Field((type) => Int, { nullable: true })
+  @Field(() => Int, { nullable: true })
   votes?: number;
 
   @ManyToOne(() => Author, (author) => author.books)
