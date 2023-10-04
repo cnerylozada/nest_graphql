@@ -39,4 +39,9 @@ export class AuthorsResolver {
   saveAuthor(@Args('author') author: CreateAuthorInputDto) {
     return this.authorsService.saveAuthor(author);
   }
+
+  @Mutation(() => String)
+  deleteAuthorById(@Args('id', { type: () => String! }) id: string) {
+    return this.authorsService.deleteAuthorById(id);
+  }
 }

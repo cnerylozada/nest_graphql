@@ -7,7 +7,7 @@ import { Author } from 'src/authors/author.entity';
 export class Book {
   @PrimaryGeneratedColumn()
   @Field(() => ID!)
-  id: string;
+  id: number;
 
   @Column()
   @Field()
@@ -16,6 +16,6 @@ export class Book {
   @Field(() => Int, { nullable: true })
   votes?: number;
 
-  @ManyToOne(() => Author, (author) => author.books)
+  @ManyToOne(() => Author, (author) => author.books, { onDelete: 'CASCADE' })
   author: Author;
 }

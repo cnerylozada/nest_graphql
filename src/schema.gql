@@ -53,6 +53,7 @@ type Mutation {
   savePet(pet: CreatePetInputDto!): Pet!
   deletePetById(petId: ID!): ID!
   saveAuthor(author: CreateAuthorInputDto!): Author!
+  deleteAuthorById(id: String!): String!
   saveBookInAuthor(book: CreateBookInputDto!, authordId: ID!): Book!
 }
 

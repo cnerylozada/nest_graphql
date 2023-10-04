@@ -22,13 +22,11 @@ export class BooksService {
   }
 
   async getBookById(id: string) {
-    return this.booksRepository.findOneBy({ id });
+    return this.booksRepository.findOneBy({ id: +id });
   }
 
   async saveBookInAuthor(book: CreateBookInputDto, author: Author) {
-    const newBook = new Book();
-    newBook.title = book.title;
-    newBook.author = author;
+    const newBook = this.booksRepository.create({ ...book, author });
     return this.booksRepository.save(newBook);
   }
 }

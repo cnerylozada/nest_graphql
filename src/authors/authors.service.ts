@@ -15,13 +15,16 @@ export class AuthorsService {
   }
 
   async getAuthorById(id: string) {
-    return this.authorsRepository.findOneByOrFail({ id });
+    return this.authorsRepository.findOneByOrFail({ id: +id });
   }
 
   async saveAuthor(author: CreateAuthorInputDto) {
-    const newAuthor = new Author();
-    newAuthor.firstName = author.firstName;
-    newAuthor.books = [];
+    const newAuthor = this.authorsRepository.create(author);
     return this.authorsRepository.save(newAuthor);
+  }
+
+  async deleteAuthorById(id: string) {
+    await this.authorsRepository.delete({ id: +id });
+    return id;
   }
 }

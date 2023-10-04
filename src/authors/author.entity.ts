@@ -7,13 +7,13 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 export class Author {
   @PrimaryGeneratedColumn()
   @Field(() => ID!)
-  id: string;
+  id: number;
 
   @Column()
   @Field()
   firstName: string;
 
-  @OneToMany(() => Book, (book) => book.author)
+  @OneToMany(() => Book, (book) => book.author, { cascade: true })
   @Field(() => [Book], { nullable: true })
   books?: Book[];
 }
