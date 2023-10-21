@@ -54,7 +54,7 @@ type Mutation {
   deletePetById(petId: ID!): ID!
   saveAuthor(author: CreateAuthorInputDto!): Author!
   deleteAuthorById(id: String!): String!
-  saveBookInAuthor(book: CreateBookInputDto!, authordId: ID!): Book!
+  saveBookInAuthor(book: CreateBookInputDto!, authorId: ID!): Book!
 }
 
 input CreatePetInputDto {

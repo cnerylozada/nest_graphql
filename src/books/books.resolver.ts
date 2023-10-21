@@ -24,7 +24,7 @@ export class BooksResolver {
   @Mutation(() => Book)
   async saveBookInAuthor(
     @Args('book') book: CreateBookInputDto,
-    @Args('authordId', { type: () => ID! }) authorId: string,
+    @Args('authorId', { type: () => ID! }) authorId: string,
   ) {
     const author = await this.authorsService.getAuthorById(authorId);
     return this.booksService.saveBookInAuthor(book, author);
