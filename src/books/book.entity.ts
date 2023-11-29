@@ -6,7 +6,7 @@ import { Author } from 'src/authors/author.entity';
 @ObjectType()
 export class Book {
   @PrimaryGeneratedColumn()
-  @Field(() => ID!)
+  @Field(() => ID)
   id: number;
 
   @Column()

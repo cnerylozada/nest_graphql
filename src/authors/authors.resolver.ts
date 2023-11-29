@@ -31,7 +31,7 @@ export class AuthorsResolver {
   }
 
   @Query(() => Author)
-  getAuthorById(@Args('id', { type: () => ID! }) id: string) {
+  getAuthorById(@Args('id', { type: () => ID }) id: string) {
     return this.authorsService.getAuthorById(id);
   }
 

@@ -6,7 +6,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 @ObjectType()
 export class Author {
   @PrimaryGeneratedColumn()
-  @Field(() => ID!)
+  @Field(() => ID)
   id: number;
 
   @Column()
