@@ -4,7 +4,7 @@ services:
     image: postgres
     restart: always
     ports:
-      - "5433:${DB_PORT}"
+      - "${DB_HOST_PORT}:${DB_CONTAINER_PORT}"
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
