@@ -17,10 +17,10 @@ import { BooksModule } from './books/books.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 5432,
-      username: 'postgres',
+      port: 5433,
+      username: 'cnerylozada',
       password: '123456',
-      database: 'postgres',
+      database: 'nestgraphql_db',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
