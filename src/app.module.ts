@@ -26,7 +26,7 @@ import configuration from './config/configuration';
         return {
           type: 'postgres',
           host: configService.get('database.host'),
-          port: configService.get('database.hostPort'),
+          port: configService.get('database.port'),
           username: configService.get('database.username'),
           password: configService.get('database.password'),
           database: configService.get('database.name'),

@@ -1,14 +1,20 @@
 version: '3.8'
 services:
+  api:
+    build: .
+    ports:
+      - 3001:3001
+    depends_on:
+      - pgdb
   pgdb:
     image: postgres
     restart: always
     ports:
-      - "${DB_HOST_PORT}:${DB_CONTAINER_PORT}"
+      - 5433:5432
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: nestgraphql_db
+      POSTGRES_USER: cnerylozada
+      POSTGRES_PASSWORD: 123456
     volumes:
       - db:/var/lib/postgresql/data
 
